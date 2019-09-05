@@ -14,7 +14,7 @@
 #'
 bt_tidy_gage <- function(gage_result, qval = 0.1) {
 
-  require(tidyverse)
+  requireNamespace(tidyverse)
 
   bind_rows(
     list(Up = as.data.frame(gage_result[["greater"]]) %>% rownames_to_column(),

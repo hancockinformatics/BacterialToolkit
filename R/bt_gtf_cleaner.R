@@ -17,7 +17,7 @@
 bt_gtf_cleaner <- function(gtf_file) {
 
   # Depend on tidyverse packages
-  require(tidyverse)
+  requireNamespace(tidyverse)
 
   # Specify column names
   gtf_cols <- c("seqname", "source", "feature", "start", "end",

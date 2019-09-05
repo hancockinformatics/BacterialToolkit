@@ -9,11 +9,11 @@
 #'
 #' @description
 #' This function is designed to perform enrichment on a list of genes of
-#' interest, comparing to some specified background. Uses Fisher's Exact Test for
-#' p-value.
+#' interest, comparing to some specified background. Uses Fisher's Exact Test
+#' for p-value.
 bt_test_enrichment <- function(query_genes, enrichment_set, total_genes) {
 
-  require(tidyverse)
+  requireNamespace(tidyverse)
 
 
   # Calculate overlap between the query list and enrichment set
