@@ -2,7 +2,7 @@
 #'
 #' @param gtf_file Path to GTF/GFF file to be cleaned
 #'
-#' @return
+#' @return Tidy data frame of annotations
 #' @export
 #'
 #' @description

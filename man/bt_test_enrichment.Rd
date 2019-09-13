@@ -15,6 +15,9 @@ bt_test_enrichment(query_genes, enrichment_set, total_genes)
 }
 \description{
 This function is designed to perform enrichment on a list of genes of
-interest, comparing to some specified background. Uses Fisher's Exact Test for
-p-value.
+interest, comparing to some specified background. Uses Fisher's Exact Test
+for p-value.
+}
+\author{
+Travis Blimkie
 }

@@ -9,6 +9,9 @@ bt_gtf_cleaner(gtf_file)
 \arguments{
 \item{gtf_file}{Path to GTF/GFF file to be cleaned}
 }
+\value{
+Tidy data frame of annotations
+}
 \description{
 Given an input GTF file (Pseudomonas aeruginosa), separates and cleans
 columns, returning a clean and tidy data frame. Only returns locus tag, gene
