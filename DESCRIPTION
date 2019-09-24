@@ -1,6 +1,6 @@
 Package: BacterialToolkit
 Title: Functions for working with bacterial projects
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person(given = "Travis",
            family = "Blimkie",
@@ -11,3 +11,10 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Imports: 
+    dplyr,
+    tidyr,
+    stringr,
+    stats,
+    tibble,
+    readr

@@ -7,17 +7,23 @@
 bt_gtf_cleaner(gtf_file)
 }
 \arguments{
-\item{gtf_file}{Path to GTF/GFF file to be cleaned}
+\item{gtf_file}{Path to GTF/GFF file to be cleaned.}
 }
 \value{
-Tidy data frame of annotations
+Tidy data frame of annotations.
 }
 \description{
-Given an input GTF file (Pseudomonas aeruginosa), separates and cleans
-columns, returning a clean and tidy data frame. Only returns locus tag, gene
-name, description, start, end, and strand columns. Only supports PAO1, PA14,
-and LESB58. Uses a single regex to match and extract locus tag for all three
-strains.
+Given an input GTF file (Pseudomonas aeruginosa), separates and
+cleans columns, returning a clean and tidy data frame. Only returns locus
+tag, gene name, description, start, end, and strand columns. Only supports
+PAO1, PA14, and LESB58. Uses a single regex to match and extract locus tag
+for all three strains.
+}
+\references{
+None.
+}
+\seealso{
+https://github.com/hancockinformatics/BacterialToolkit
 }
 \author{
 Travis Blimkie
