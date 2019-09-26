@@ -6,6 +6,10 @@
 #'
 #' @export
 #'
+#' @import dplyr
+#' @import stringr
+#' @import tidyr
+#'
 #' @description Given an input GTF file (Pseudomonas aeruginosa), separates and
 #' cleans columns, returning a clean and tidy data frame. Only returns locus
 #' tag, gene name, description, start, end, and strand columns. Only supports
@@ -30,23 +34,23 @@ bt_gtf_cleaner <- function(gtf_file) {
 
   # Perform all the cleaning steps
   clean_gtf <- gtf %>%
-    dplyr::filter(feature == "CDS") %>%
-    tidyr::separate(
+    filter(feature == "CDS") %>%
+    separate(
       attribute,
       into = c("gene_id", "transcript_id", "locus_tag", "name", "ref"),
       sep = ";"
     ) %>%
-    dplyr::select(locus_tag, name, start, end, strand) %>%
+    select(locus_tag, name, start, end, strand) %>%
     # Regex is important as it is meant to match IDs for three PA strains, PAO1,
     # PA14, and LESB58
-    dplyr::mutate(
-      locus_tag = stringr::str_extract(locus_tag, pattern = "PA(14|LES)?_?[0-9]{4,5}"),
-      name = stringr::str_replace(name, pattern = ' name "(.*)"', replacement = "\\1")
+    mutate(
+      locus_tag = str_extract(locus_tag, pattern = "PA(14|LES)?_?[0-9]{4,5}"),
+      name = str_replace(name, pattern = ' name "(.*)"', replacement = "\\1")
     ) %>%
-    tidyr::separate(name, into = c("name", "description"), sep = " ,", fill = "left") %>%
+    separate(name, into = c("name", "description"), sep = " ,", fill = "left") %>%
     # Set name to be equal to locus tag if name is NA. Needs to be AFTER the
     # separate() call
-    dplyr::mutate(name = dplyr::case_when(is.na(name) ~ locus_tag, TRUE ~ name))
+    mutate(name = case_when(is.na(name) ~ locus_tag, TRUE ~ name))
 
   # Explicit return for the cleaned file
   return(clean_gtf)

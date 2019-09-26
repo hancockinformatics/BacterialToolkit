@@ -1,7 +1,9 @@
 # BacterialToolkit
+
 Collection of Functions for Working on Bacterial Projects
 
-Current functions:
+
+### Current functions
 
 * **bt_gtf_cleaner** - Produces a tidy data frame from a *P. aeruginosa* GTF
   file. Supports PAO1, PA14, and LESB58.
@@ -12,9 +14,12 @@ Current functions:
   [Gage](https://bioconductor.org/packages/release/bioc/html/gage.html) results,
   and filters on q-value.
 
+
 ***
 
-Install via:
+
+### Installation
+
 ```
 install.packages("devtools")
 library(devtools)
