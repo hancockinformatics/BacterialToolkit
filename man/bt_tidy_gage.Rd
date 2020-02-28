@@ -7,24 +7,23 @@
 bt_tidy_gage(gage_result, qval = 0.1)
 }
 \arguments{
-\item{gage_result}{Results object from Gage enrichment.}
+\item{gage_result}{Output from call to \code{gage} function.}
 
-\item{qval}{Desired cutoff for significance.}
+\item{qval}{Cutoff for q-value. Defaults to 0.1.}
 }
 \value{
-Tidy data frame containing results of Gage enrichment.
+A data frame (tibble) of enriched KEGG pathways, filtered and without
+  rownames (first column contains pathway name/identifier).
 }
 \description{
-Takes a results object from Gage and munges it into a tidy data
-frame Also filters based on q-value, with a default of 0.1 from the Gage
-documentation.
+This function will simply convert the output from Gage
+  enrichment into a easier-to-use format, namely a data frame. At the same
+  time it also filters the result based on q-value, with a default of
+  "0.1".
 }
 \references{
 None.
 }
 \seealso{
-https://github.com/hancockinformatics/BacterialToolkit
-}
-\author{
-Travis Blimkie
+\url{https://www.github.com/hancockinformatics/BacterialToolkit}
 }

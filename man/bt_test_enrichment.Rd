@@ -7,26 +7,24 @@
 bt_test_enrichment(query_genes, enrichment_set, total_genes)
 }
 \arguments{
-\item{query_genes}{Genes to be tested for enrichment.}
+\item{query_genes}{List of experimentally or otherwise derived genes, in
+which one wishes to test for enrichment.}
 
-\item{enrichment_set}{Genes associated with a function/pathway.}
+\item{enrichment_set}{Set of genes of interest, such as virulence genes.}
 
-\item{total_genes}{Total number of genes.}
+\item{total_genes}{Total number of genes for the organism/species.}
 }
 \value{
-Raw p-value resulting from call to \code{stats::fisher.test()}.
+Produces the raw p-value from \code{fisher.test()}.
 }
 \description{
-This function is designed to perform enrichment on a list of
-genes of interest, comparing to some specified background. Uses Fisher's
-Exact Test for p-value.
+Perfroms Fisher's Exact test to determine enrichment of a set of
+  genes of interest compared to some list of experimentally derived genes.
+  Assumes \code{alternative = "greater"} in call to \code{fisher.test()}.
 }
 \references{
 None.
 }
 \seealso{
-https://github.com/hancockinformatics/BacterialToolkit
-}
-\author{
-Travis Blimkie
+\url{https://www.github.com/hancockinformatics/BacterialToolkit}
 }

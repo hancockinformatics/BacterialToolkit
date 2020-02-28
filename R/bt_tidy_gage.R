@@ -1,32 +1,34 @@
 #' bt_tidy_gage
 #'
-#' @param gage_result Results object from Gage enrichment.
-#' @param qval Desired cutoff for significance.
+#' @param gage_result Output from call to \code{gage} function.
+#' @param qval Cutoff for q-value. Defaults to 0.1.
 #'
-#' @return Tidy data frame containing results of Gage enrichment.
+#' @return A data frame (tibble) of enriched KEGG pathways, filtered and without
+#'   rownames (first column contains pathway name/identifier).
 #'
 #' @export
 #'
 #' @import dplyr
 #' @import tibble
 #'
-#' @description Takes a results object from Gage and munges it into a tidy data
-#' frame Also filters based on q-value, with a default of 0.1 from the Gage
-#' documentation.
+#' @description This function will simply convert the output from Gage
+#'   enrichment into a easier-to-use format, namely a data frame. At the same
+#'   time it also filters the result based on q-value, with a default of
+#'   "0.1".
 #'
 #' @references None.
 #'
-#' @seealso https://github.com/hancockinformatics/BacterialToolkit
-#'
-#' @author Travis Blimkie
+#' @seealso \url{https://www.github.com/hancockinformatics/BacterialToolkit}
 #'
 bt_tidy_gage <- function(gage_result, qval = 0.1) {
 
-  bind_rows(
-    list(Up = as.data.frame(gage_result[["greater"]]) %>% rownames_to_column(),
-         Down = as.data.frame(gage_result[["less"]]) %>% rownames_to_column()),
-    .id = "Direction"
-  ) %>%
-    filter(., q.val < qval)
+  gageList <- list(Up = gage_result[["greater"]], Down = gage_result[["less"]])
 
+  gageOut <- gageList %>%
+    map(~as.data.frame(.) %>% rownames_to_column("Pathway")) %>%
+    bind_rows(.id = "Direction") %>%
+    filter(q.val <= qval)
+
+  return(gageOut)
 }
+
